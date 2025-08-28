@@ -1,0 +1,1372 @@
+app:
+  description: ''
+  icon: 🤖
+  icon_background: '#FFEAD5'
+  mode: workflow
+  name: Podcastお試し
+  use_icon_as_answer_icon: false
+dependencies:
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: langgenius/openai:0.2.3@5a7f82fa86e28332ad51941d0b491c1e8a38ead539656442f7bf4c6129cd15fa
+- current_identifier: null
+  type: marketplace
+  value:
+    marketplace_plugin_unique_identifier: bowenliang123/base64_codec:0.3.0@c8f203a60a313fda5d6286033b96969f9a7219f849b7ff5f3fb3d79d10068bc2
+kind: app
+version: 0.3.1
+workflow:
+  conversation_variables: []
+  environment_variables:
+  - description: ''
+    id: d58ec512-f1f1-41d0-ac3c-8bcd0e53b1a5
+    name: GITHUB_REPO
+    selector:
+    - env
+    - GITHUB_REPO
+    value: casttest
+    value_type: string
+  - description: ''
+    id: 67985951-48d0-4134-8a56-409dbaa14886
+    name: GITHUB_OWNER
+    selector:
+    - env
+    - GITHUB_OWNER
+    value: callisto0719
+    value_type: string
+  - description: GITHUBのcontent APIをたたくためのPAT
+    id: 3eb698c1-b31d-4a86-a19c-22a4a7b41d2d
+    name: GITHUB_PAT
+    selector:
+    - env
+    - GITHUB_PAT
+    value: ''
+    value_type: secret
+  features:
+    file_upload:
+      allowed_file_extensions:
+      - .JPG
+      - .JPEG
+      - .PNG
+      - .GIF
+      - .WEBP
+      - .SVG
+      allowed_file_types:
+      - image
+      allowed_file_upload_methods:
+      - local_file
+      - remote_url
+      enabled: false
+      fileUploadConfig:
+        audio_file_size_limit: 50
+        batch_count_limit: 5
+        file_size_limit: 15
+        image_file_size_limit: 10
+        video_file_size_limit: 100
+        workflow_file_upload_limit: 10
+      image:
+        enabled: false
+        number_limits: 3
+        transfer_methods:
+        - local_file
+        - remote_url
+      number_limits: 3
+    opening_statement: ''
+    retriever_resource:
+      enabled: true
+    sensitive_word_avoidance:
+      enabled: false
+    speech_to_text:
+      enabled: false
+    suggested_questions: []
+    suggested_questions_after_answer:
+      enabled: false
+    text_to_speech:
+      enabled: false
+      language: ''
+      voice: ''
+  graph:
+    edges:
+    - data:
+        isInIteration: false
+        isInLoop: false
+        sourceType: start
+        targetType: http-request
+      id: 1756134009769-source-1756134011837-target
+      source: '1756134009769'
+      sourceHandle: source
+      target: '1756134011837'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: http-request
+        targetType: llm
+      id: 1756134011837-source-1756134109169-target
+      source: '1756134011837'
+      sourceHandle: source
+      target: '1756134109169'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: start
+        targetType: tool
+      id: 1756134009769-source-1756136049521-target
+      source: '1756134009769'
+      sourceHandle: source
+      target: '1756136049521'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: tool
+        targetType: llm
+      id: 1756136049521-source-1756134109169-target
+      source: '1756136049521'
+      sourceHandle: source
+      target: '1756134109169'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: tool
+      id: 1756134109169-source-1756305013969-target
+      selected: false
+      source: '1756134109169'
+      sourceHandle: source
+      target: '1756305013969'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: tool
+        targetType: code
+      id: 1756305013969-source-1756313248982-target
+      source: '1756305013969'
+      sourceHandle: source
+      target: '1756313248982'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: llm
+      id: 1756134109169-source-1756392692997-target
+      selected: false
+      source: '1756134109169'
+      sourceHandle: source
+      target: '1756392692997'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: code
+        targetType: http-request
+      id: 1756313248982-source-17563938092300-target
+      source: '1756313248982'
+      sourceHandle: source
+      target: '17563938092300'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: llm
+        targetType: tool
+      id: 1756392692997-source-1756395796555-target
+      source: '1756392692997'
+      sourceHandle: source
+      target: '1756395796555'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: tool
+        targetType: http-request
+      id: 1756395796555-source-17563938092300-target
+      source: '1756395796555'
+      sourceHandle: source
+      target: '17563938092300'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    - data:
+        isInLoop: false
+        sourceType: http-request
+        targetType: end
+      id: 17563938092300-source-1756396338737-target
+      source: '17563938092300'
+      sourceHandle: source
+      target: '1756396338737'
+      targetHandle: target
+      type: custom
+      zIndex: 0
+    nodes:
+    - data:
+        desc: ''
+        selected: false
+        title: 開始
+        type: start
+        variables: []
+      height: 53
+      id: '1756134009769'
+      position:
+        x: 80
+        y: 282
+      positionAbsolute:
+        x: 80
+        y: 282
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        authorization:
+          config: null
+          type: no-auth
+        body:
+          data: []
+          type: none
+        desc: ''
+        headers: ''
+        method: get
+        params: ''
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: 100
+        selected: false
+        ssl_verify: true
+        timeout:
+          max_connect_timeout: 0
+          max_read_timeout: 0
+          max_write_timeout: 0
+        title: HTTP リクエスト
+        type: http-request
+        url: https://news.google.com/rss/topics/CAAqKAgKIiJDQkFTRXdvSkwyMHZNR1ptZHpWbUVnSnFZUm9DU2xBb0FBUAE?hl=ja&gl=JP&ceid=JP%3Aja
+        variables: []
+      height: 187
+      id: '1756134011837'
+      position:
+        x: 385
+        y: 282
+      positionAbsolute:
+        x: 385
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1756136049521'
+          - text
+        desc: Feedからネタを抽出
+        model:
+          completion_params:
+            temperature: 0.7
+          mode: chat
+          name: gpt-4.1
+          provider: langgenius/openai/openai
+        prompt_template:
+        - id: c83fd5b2-0456-4b21-b7c6-09791613b6b8
+          role: system
+          text: "# 役割\nあなたは優秀な記事作成者です。\nユーザーメッセージに与えられたGoogle NewsのRSSフィードから、テック系読者向けのカジュアルなニュース記事を作成してください。\n\
+            \n# 要件\n- **対象読者**: テクノロジーに詳しい読者層\n- **記事の長さ**: 読み上げ時間5分程度（約1,200-1,500文字）\n\
+            - **トーン**: カジュアルで親しみやすく、専門用語も適度に使用\n- **構成**: 見出し付きの記事形式で、重要度順に整理\n# 記事の構造\n\
+            1. キャッチーなタイトル\n    - 今日の日付を付けることで、何日のニュースか分かるように\n        - 時刻は不要\n2.\
+            \ リード文（全体の要約）\n3. 本文（3-5つの主要トピックに分けて）\n    - 各トピックに小見出しを付ける\n    - 情報源を適切に記載\n\
+            \        - ラジオで読み上げることを前提とするのであくまでメディア名だけを表記し、URLは記載しない。\n    - テック系読者が興味を持ちそうな詳細や背景情報を含める\n\
+            # 注意点\n- 単純な情報の羅列ではなく、読み物として楽しめる文章にする\n- 専門的すぎず、でも表面的すぎない適度な深度で\n- トピック間の関連性があれば言及する\n\
+            - 読者の関心を引く「なぜこれが重要なのか」の視点を含める\n\n\n\n"
+        - id: 33db86c2-7381-4640-8a35-7b7f1afe6ec7
+          role: user
+          text: '# 今日の日付
+
+            {{#1756136049521.text#}}
+
+
+            # RSSフィード
+
+            {{#1756134011837.body#}}'
+        selected: false
+        title: LLM (Feedからネタを抽出)
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 117
+      id: '1756134109169'
+      position:
+        x: 682.4064743524192
+        y: 282
+      positionAbsolute:
+        x: 682.4064743524192
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        is_team_authorization: true
+        output_schema: null
+        paramSchemas:
+        - auto_generate: null
+          default: '%Y-%m-%d %H:%M:%S'
+          form: form
+          human_description:
+            en_US: Time format in strftime standard.
+            ja_JP: Time format in strftime standard.
+            pt_BR: Time format in strftime standard.
+            zh_Hans: strftime 标准的时间格式。
+          label:
+            en_US: Format
+            ja_JP: Format
+            pt_BR: Format
+            zh_Hans: 格式
+          llm_description: null
+          max: null
+          min: null
+          name: format
+          options: []
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: UTC
+          form: form
+          human_description:
+            en_US: Timezone
+            ja_JP: Timezone
+            pt_BR: Timezone
+            zh_Hans: 时区
+          label:
+            en_US: Timezone
+            ja_JP: Timezone
+            pt_BR: Timezone
+            zh_Hans: 时区
+          llm_description: null
+          max: null
+          min: null
+          name: timezone
+          options:
+          - icon: null
+            label:
+              en_US: UTC
+              ja_JP: UTC
+              pt_BR: UTC
+              zh_Hans: UTC
+            value: UTC
+          - icon: null
+            label:
+              en_US: America/New_York
+              ja_JP: America/New_York
+              pt_BR: America/New_York
+              zh_Hans: 美洲/纽约
+            value: America/New_York
+          - icon: null
+            label:
+              en_US: America/Los_Angeles
+              ja_JP: America/Los_Angeles
+              pt_BR: America/Los_Angeles
+              zh_Hans: 美洲/洛杉矶
+            value: America/Los_Angeles
+          - icon: null
+            label:
+              en_US: America/Chicago
+              ja_JP: America/Chicago
+              pt_BR: America/Chicago
+              zh_Hans: 美洲/芝加哥
+            value: America/Chicago
+          - icon: null
+            label:
+              en_US: America/Sao_Paulo
+              ja_JP: America/Sao_Paulo
+              pt_BR: América/São Paulo
+              zh_Hans: 美洲/圣保罗
+            value: America/Sao_Paulo
+          - icon: null
+            label:
+              en_US: Asia/Shanghai
+              ja_JP: Asia/Shanghai
+              pt_BR: Asia/Shanghai
+              zh_Hans: 亚洲/上海
+            value: Asia/Shanghai
+          - icon: null
+            label:
+              en_US: Asia/Ho_Chi_Minh
+              ja_JP: Asia/Ho_Chi_Minh
+              pt_BR: Ásia/Ho Chi Minh
+              zh_Hans: 亚洲/胡志明市
+            value: Asia/Ho_Chi_Minh
+          - icon: null
+            label:
+              en_US: Asia/Tokyo
+              ja_JP: Asia/Tokyo
+              pt_BR: Asia/Tokyo
+              zh_Hans: 亚洲/东京
+            value: Asia/Tokyo
+          - icon: null
+            label:
+              en_US: Asia/Dubai
+              ja_JP: Asia/Dubai
+              pt_BR: Asia/Dubai
+              zh_Hans: 亚洲/迪拜
+            value: Asia/Dubai
+          - icon: null
+            label:
+              en_US: Asia/Kolkata
+              ja_JP: Asia/Kolkata
+              pt_BR: Asia/Kolkata
+              zh_Hans: 亚洲/加尔各答
+            value: Asia/Kolkata
+          - icon: null
+            label:
+              en_US: Asia/Seoul
+              ja_JP: Asia/Seoul
+              pt_BR: Asia/Seoul
+              zh_Hans: 亚洲/首尔
+            value: Asia/Seoul
+          - icon: null
+            label:
+              en_US: Asia/Singapore
+              ja_JP: Asia/Singapore
+              pt_BR: Asia/Singapore
+              zh_Hans: 亚洲/新加坡
+            value: Asia/Singapore
+          - icon: null
+            label:
+              en_US: Europe/London
+              ja_JP: Europe/London
+              pt_BR: Europe/London
+              zh_Hans: 欧洲/伦敦
+            value: Europe/London
+          - icon: null
+            label:
+              en_US: Europe/Berlin
+              ja_JP: Europe/Berlin
+              pt_BR: Europe/Berlin
+              zh_Hans: 欧洲/柏林
+            value: Europe/Berlin
+          - icon: null
+            label:
+              en_US: Europe/Moscow
+              ja_JP: Europe/Moscow
+              pt_BR: Europe/Moscow
+              zh_Hans: 欧洲/莫斯科
+            value: Europe/Moscow
+          - icon: null
+            label:
+              en_US: Australia/Sydney
+              ja_JP: Australia/Sydney
+              pt_BR: Australia/Sydney
+              zh_Hans: 澳大利亚/悉尼
+            value: Australia/Sydney
+          - icon: null
+            label:
+              en_US: Pacific/Auckland
+              ja_JP: Pacific/Auckland
+              pt_BR: Pacific/Auckland
+              zh_Hans: 太平洋/奥克兰
+            value: Pacific/Auckland
+          - icon: null
+            label:
+              en_US: Africa/Cairo
+              ja_JP: Africa/Cairo
+              pt_BR: Africa/Cairo
+              zh_Hans: 非洲/开罗
+            value: Africa/Cairo
+          placeholder: null
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: select
+        params:
+          format: ''
+          timezone: ''
+        provider_id: time
+        provider_name: time
+        provider_type: builtin
+        selected: false
+        title: Current Time
+        tool_configurations:
+          format:
+            type: mixed
+            value: '%Y-%m-%d'
+          timezone:
+            type: constant
+            value: Asia/Tokyo
+        tool_description: A tool for getting the current time.
+        tool_label: Current Time
+        tool_name: current_time
+        tool_node_version: '2'
+        tool_parameters: {}
+        type: tool
+      height: 115
+      id: '1756136049521'
+      position:
+        x: 386
+        y: 537.5
+      positionAbsolute:
+        x: 386
+        y: 537.5
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        is_team_authorization: true
+        output_schema: null
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: The text to be converted.
+            ja_JP: The text to be converted.
+            pt_BR: The text to be converted.
+            zh_Hans: 要转换的文本。
+          label:
+            en_US: Text
+            ja_JP: Text
+            pt_BR: Text
+            zh_Hans: 文本
+          llm_description: The text to be converted.
+          max: null
+          min: null
+          name: text
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: null
+          form: form
+          human_description:
+            en_US: All available TTS models. You can config model in the Model Provider
+              of Settings.
+            ja_JP: All available TTS models. You can config model in the Model Provider
+              of Settings.
+            pt_BR: All available TTS models. You can config model in the Model Provider
+              of Settings.
+            zh_Hans: 所有可用的 TTS 模型。你可以在设置中的模型供应商里配置。
+          label:
+            en_US: Model
+            ja_JP: Model
+            pt_BR: Model
+            zh_Hans: Model
+          llm_description: null
+          max: null
+          min: null
+          name: model
+          options:
+          - icon: null
+            label:
+              en_US: gpt-4o-mini-tts(langgenius/openai/openai)
+              ja_JP: gpt-4o-mini-tts(langgenius/openai/openai)
+              pt_BR: gpt-4o-mini-tts(langgenius/openai/openai)
+              zh_Hans: gpt-4o-mini-tts(langgenius/openai/openai)
+            value: langgenius/openai/openai#gpt-4o-mini-tts
+          - icon: null
+            label:
+              en_US: tts-1-hd(langgenius/openai/openai)
+              ja_JP: tts-1-hd(langgenius/openai/openai)
+              pt_BR: tts-1-hd(langgenius/openai/openai)
+              zh_Hans: tts-1-hd(langgenius/openai/openai)
+            value: langgenius/openai/openai#tts-1-hd
+          - icon: null
+            label:
+              en_US: tts-1(langgenius/openai/openai)
+              ja_JP: tts-1(langgenius/openai/openai)
+              pt_BR: tts-1(langgenius/openai/openai)
+              zh_Hans: tts-1(langgenius/openai/openai)
+            value: langgenius/openai/openai#tts-1
+          placeholder:
+            en_US: Select a model
+            ja_JP: Select a model
+            pt_BR: Select a model
+            zh_Hans: 选择模型
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: select
+        - auto_generate: null
+          default: null
+          form: form
+          human_description:
+            en_US: Select a voice for gpt-4o-mini-tts model
+            ja_JP: Select a voice for gpt-4o-mini-tts model
+            pt_BR: Select a voice for gpt-4o-mini-tts model
+            zh_Hans: Select a voice for gpt-4o-mini-tts model
+          label:
+            en_US: Voice of gpt-4o-mini-tts(langgenius/openai/openai)
+            ja_JP: Voice of gpt-4o-mini-tts(langgenius/openai/openai)
+            pt_BR: Voice of gpt-4o-mini-tts(langgenius/openai/openai)
+            zh_Hans: Voice of gpt-4o-mini-tts(langgenius/openai/openai)
+          llm_description: null
+          max: null
+          min: null
+          name: voice#langgenius/openai/openai#gpt-4o-mini-tts
+          options:
+          - icon: null
+            label:
+              en_US: Alloy
+              ja_JP: Alloy
+              pt_BR: Alloy
+              zh_Hans: Alloy
+            value: alloy
+          - icon: null
+            label:
+              en_US: Ash
+              ja_JP: Ash
+              pt_BR: Ash
+              zh_Hans: Ash
+            value: ash
+          - icon: null
+            label:
+              en_US: Ballad
+              ja_JP: Ballad
+              pt_BR: Ballad
+              zh_Hans: Ballad
+            value: ballad
+          - icon: null
+            label:
+              en_US: Coral
+              ja_JP: Coral
+              pt_BR: Coral
+              zh_Hans: Coral
+            value: coral
+          - icon: null
+            label:
+              en_US: Echo
+              ja_JP: Echo
+              pt_BR: Echo
+              zh_Hans: Echo
+            value: echo
+          - icon: null
+            label:
+              en_US: Fable
+              ja_JP: Fable
+              pt_BR: Fable
+              zh_Hans: Fable
+            value: fable
+          - icon: null
+            label:
+              en_US: Onyx
+              ja_JP: Onyx
+              pt_BR: Onyx
+              zh_Hans: Onyx
+            value: onyx
+          - icon: null
+            label:
+              en_US: Nova
+              ja_JP: Nova
+              pt_BR: Nova
+              zh_Hans: Nova
+            value: nova
+          - icon: null
+            label:
+              en_US: Sage
+              ja_JP: Sage
+              pt_BR: Sage
+              zh_Hans: Sage
+            value: sage
+          - icon: null
+            label:
+              en_US: Shimmer
+              ja_JP: Shimmer
+              pt_BR: Shimmer
+              zh_Hans: Shimmer
+            value: shimmer
+          - icon: null
+            label:
+              en_US: Verse
+              ja_JP: Verse
+              pt_BR: Verse
+              zh_Hans: Verse
+            value: verse
+          placeholder:
+            en_US: Select a voice
+            ja_JP: Select a voice
+            pt_BR: Select a voice
+            zh_Hans: Select a voice
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: select
+        - auto_generate: null
+          default: null
+          form: form
+          human_description:
+            en_US: Select a voice for tts-1-hd model
+            ja_JP: Select a voice for tts-1-hd model
+            pt_BR: Select a voice for tts-1-hd model
+            zh_Hans: Select a voice for tts-1-hd model
+          label:
+            en_US: Voice of tts-1-hd(langgenius/openai/openai)
+            ja_JP: Voice of tts-1-hd(langgenius/openai/openai)
+            pt_BR: Voice of tts-1-hd(langgenius/openai/openai)
+            zh_Hans: Voice of tts-1-hd(langgenius/openai/openai)
+          llm_description: null
+          max: null
+          min: null
+          name: voice#langgenius/openai/openai#tts-1-hd
+          options:
+          - icon: null
+            label:
+              en_US: Alloy
+              ja_JP: Alloy
+              pt_BR: Alloy
+              zh_Hans: Alloy
+            value: alloy
+          - icon: null
+            label:
+              en_US: Ash
+              ja_JP: Ash
+              pt_BR: Ash
+              zh_Hans: Ash
+            value: ash
+          - icon: null
+            label:
+              en_US: Ballad
+              ja_JP: Ballad
+              pt_BR: Ballad
+              zh_Hans: Ballad
+            value: ballad
+          - icon: null
+            label:
+              en_US: Coral
+              ja_JP: Coral
+              pt_BR: Coral
+              zh_Hans: Coral
+            value: coral
+          - icon: null
+            label:
+              en_US: Echo
+              ja_JP: Echo
+              pt_BR: Echo
+              zh_Hans: Echo
+            value: echo
+          - icon: null
+            label:
+              en_US: Fable
+              ja_JP: Fable
+              pt_BR: Fable
+              zh_Hans: Fable
+            value: fable
+          - icon: null
+            label:
+              en_US: Onyx
+              ja_JP: Onyx
+              pt_BR: Onyx
+              zh_Hans: Onyx
+            value: onyx
+          - icon: null
+            label:
+              en_US: Nova
+              ja_JP: Nova
+              pt_BR: Nova
+              zh_Hans: Nova
+            value: nova
+          - icon: null
+            label:
+              en_US: Sage
+              ja_JP: Sage
+              pt_BR: Sage
+              zh_Hans: Sage
+            value: sage
+          - icon: null
+            label:
+              en_US: Shimmer
+              ja_JP: Shimmer
+              pt_BR: Shimmer
+              zh_Hans: Shimmer
+            value: shimmer
+          - icon: null
+            label:
+              en_US: Verse
+              ja_JP: Verse
+              pt_BR: Verse
+              zh_Hans: Verse
+            value: verse
+          placeholder:
+            en_US: Select a voice
+            ja_JP: Select a voice
+            pt_BR: Select a voice
+            zh_Hans: Select a voice
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: select
+        - auto_generate: null
+          default: null
+          form: form
+          human_description:
+            en_US: Select a voice for tts-1 model
+            ja_JP: Select a voice for tts-1 model
+            pt_BR: Select a voice for tts-1 model
+            zh_Hans: Select a voice for tts-1 model
+          label:
+            en_US: Voice of tts-1(langgenius/openai/openai)
+            ja_JP: Voice of tts-1(langgenius/openai/openai)
+            pt_BR: Voice of tts-1(langgenius/openai/openai)
+            zh_Hans: Voice of tts-1(langgenius/openai/openai)
+          llm_description: null
+          max: null
+          min: null
+          name: voice#langgenius/openai/openai#tts-1
+          options:
+          - icon: null
+            label:
+              en_US: Alloy
+              ja_JP: Alloy
+              pt_BR: Alloy
+              zh_Hans: Alloy
+            value: alloy
+          - icon: null
+            label:
+              en_US: Ash
+              ja_JP: Ash
+              pt_BR: Ash
+              zh_Hans: Ash
+            value: ash
+          - icon: null
+            label:
+              en_US: Ballad
+              ja_JP: Ballad
+              pt_BR: Ballad
+              zh_Hans: Ballad
+            value: ballad
+          - icon: null
+            label:
+              en_US: Coral
+              ja_JP: Coral
+              pt_BR: Coral
+              zh_Hans: Coral
+            value: coral
+          - icon: null
+            label:
+              en_US: Echo
+              ja_JP: Echo
+              pt_BR: Echo
+              zh_Hans: Echo
+            value: echo
+          - icon: null
+            label:
+              en_US: Fable
+              ja_JP: Fable
+              pt_BR: Fable
+              zh_Hans: Fable
+            value: fable
+          - icon: null
+            label:
+              en_US: Onyx
+              ja_JP: Onyx
+              pt_BR: Onyx
+              zh_Hans: Onyx
+            value: onyx
+          - icon: null
+            label:
+              en_US: Nova
+              ja_JP: Nova
+              pt_BR: Nova
+              zh_Hans: Nova
+            value: nova
+          - icon: null
+            label:
+              en_US: Sage
+              ja_JP: Sage
+              pt_BR: Sage
+              zh_Hans: Sage
+            value: sage
+          - icon: null
+            label:
+              en_US: Shimmer
+              ja_JP: Shimmer
+              pt_BR: Shimmer
+              zh_Hans: Shimmer
+            value: shimmer
+          - icon: null
+            label:
+              en_US: Verse
+              ja_JP: Verse
+              pt_BR: Verse
+              zh_Hans: Verse
+            value: verse
+          placeholder:
+            en_US: Select a voice
+            ja_JP: Select a voice
+            pt_BR: Select a voice
+            zh_Hans: Select a voice
+          precision: null
+          required: false
+          scope: null
+          template: null
+          type: select
+        params:
+          model: ''
+          text: ''
+          voice#langgenius/openai/openai#gpt-4o-mini-tts: ''
+          voice#langgenius/openai/openai#tts-1: ''
+          voice#langgenius/openai/openai#tts-1-hd: ''
+        provider_id: audio
+        provider_name: audio
+        provider_type: builtin
+        selected: false
+        title: Text To Speech
+        tool_configurations:
+          model:
+            type: constant
+            value: langgenius/openai/openai#gpt-4o-mini-tts
+          voice#langgenius/openai/openai#gpt-4o-mini-tts:
+            type: constant
+            value: alloy
+          voice#langgenius/openai/openai#tts-1:
+            type: constant
+            value: alloy
+          voice#langgenius/openai/openai#tts-1-hd:
+            type: constant
+            value: alloy
+        tool_description: Convert text to audio file.
+        tool_label: Text To Speech
+        tool_name: tts
+        tool_node_version: '2'
+        tool_parameters:
+          text:
+            type: mixed
+            value: '{{#1756134109169.text#}}'
+        type: tool
+      height: 167
+      id: '1756305013969'
+      position:
+        x: 972.4115995974325
+        y: 282
+      positionAbsolute:
+        x: 972.4115995974325
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        author: hiroaki haga
+        desc: ''
+        height: 116
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"OpenAIからのレスポンスがでかすぎて受け取れないことがある","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"→環境変数の値を変更して対応","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"https://qiita.com/lamvn/items/315b0988069019cd0140","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 550
+      height: 116
+      id: '1756311916096'
+      position:
+        x: 504.7283646471782
+        y: 18.98527619823122
+      positionAbsolute:
+        x: 504.7283646471782
+        y: 18.98527619823122
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 550
+    - data:
+        author: hiroaki haga
+        desc: ''
+        height: 88
+        selected: false
+        showAuthor: true
+        text: '{"root":{"children":[{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"音声読み上げ","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"voicevox試したい。","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""},{"children":[{"detail":0,"format":0,"mode":"normal","style":"","text":"https://zenn.dev/isi00141/articles/54c5c176f6ac1a","type":"text","version":1}],"direction":"ltr","format":"","indent":0,"type":"paragraph","version":1,"textFormat":0,"textStyle":""}],"direction":"ltr","format":"","indent":0,"type":"root","version":1}}'
+        theme: blue
+        title: ''
+        type: ''
+        width: 240
+      height: 88
+      id: '1756312033640'
+      position:
+        x: 972.4115995974325
+        y: 180.61274269957164
+      positionAbsolute:
+        x: 972.4115995974325
+        y: 180.61274269957164
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom-note
+      width: 240
+    - data:
+        code: "import base64\nimport urllib.request\nimport os\nimport ssl\n\ndef\
+          \ main(inputs: dict, date: str, gh_token: str, owner: str, repo: str) ->\
+          \ dict:\n    # Difyから渡されたファイルURL\n    wav_url = inputs[0][\"url\"]\n   \
+          \ filename = date + \"-episode.wav\"\n\n    # owner    = os.environ.get(\"\
+          GITHUB_OWNER\")\n    # repo     = os.environ.get(\"GITHUB_REPO\")\n    #\
+          \ gh_token = os.environ.get(\"GITHUB_PAT\")\n\n    if not gh_token:\n  \
+          \      return {\n            \"status\": 0\n        }\n\n    # 相対パスの場合、自分のDifyのホスト名を補う\n\
+          \    if wav_url.startswith(\"/\"):\n        wav_url = \"http://api:5001\"\
+          \ + wav_url\n\n    # WAVファイルをダウンロード\n    with urllib.request.urlopen(wav_url)\
+          \ as response:\n        wav_data = response.read()\n    # Base64に変換\n  \
+          \  wav_b64 = base64.b64encode(wav_data).decode(\"utf-8\")\n\n    path =\
+          \ f\"audio/{filename}\"\n    url = f\"https://api.github.com/repos/{owner}/{repo}/contents/{path}\"\
+          \n    headers = {\n        \"Authorization\": f\"Bearer {gh_token}\",\n\
+          \        \"Accept\": \"application/vnd.github+json\",\n        \"Content-Type\"\
+          : \"application/json\",\n        \"User-Agent\": \"dify-upload-script\"\n\
+          \    }\n\n    ctx = ssl._create_unverified_context()\n    # 既存ファイルチェック\n\
+          \    sha = None\n    try:\n        req = urllib.request.Request(url + f\"\
+          ?ref=master\", headers=headers, method=\"GET\")\n        with urllib.request.urlopen(req,\
+          \ context=ctx) as r:\n            existing = json.loads(r.read().decode(\"\
+          utf-8\"))\n            sha = existing.get(\"sha\")\n    except urllib.error.HTTPError\
+          \ as e:\n        if e.code != 404:\n            raise\n\n    body = {\"\
+          message\": f\"feat(audio): add/update {path}\",\n            \"content\"\
+          : wav_b64,\n            \"branch\": \"master\"}\n    if sha:\n        body[\"\
+          sha\"] = sha\n\n    data = json.dumps(body).encode(\"utf-8\")\n    req =\
+          \ urllib.request.Request(url, headers=headers, method=\"PUT\", data=data)\n\
+          \    with urllib.request.urlopen(req, context=ctx) as r:\n        res =\
+          \ json.loads(r.read().decode(\"utf-8\"))\n\n    return {\n        \"status\"\
+          : 1\n    }"
+        code_language: python3
+        desc: wavファイルをbase64エンコード &Githubに送信
+        outputs:
+          status:
+            children: null
+            type: number
+        selected: false
+        title: base64変換 & wavをGithubに送る
+        type: code
+        variables:
+        - value_selector:
+          - '1756305013969'
+          - files
+          value_type: array[file]
+          variable: inputs
+        - value_selector:
+          - '1756136049521'
+          - text
+          value_type: string
+          variable: date
+        - value_selector:
+          - env
+          - GITHUB_PAT
+          value_type: secret
+          variable: gh_token
+        - value_selector:
+          - env
+          - GITHUB_OWNER
+          value_type: string
+          variable: owner
+        - value_selector:
+          - env
+          - GITHUB_REPO
+          value_type: string
+          variable: repo
+      height: 97
+      id: '1756313248982'
+      position:
+        x: 1240.675412934396
+        y: 282
+      positionAbsolute:
+        x: 1240.675412934396
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        context:
+          enabled: true
+          variable_selector:
+          - '1756134109169'
+          - text
+        desc: ''
+        model:
+          completion_params:
+            json_schema: "{\n  \"$schema\": \"https://json-schema.org/draft/2020-12/schema\"\
+              ,\n  \"$id\": \"https://example.com/schemas/podcast-title-description.json\"\
+              ,\n  \"title\": \"Podcast Title & Description\",\n  \"description\"\
+              : \"Podcastエピソードのタイトルと説明文（読み上げ記事から生成）の検証用スキーマ。\",\n  \"type\": \"object\"\
+              ,\n  \"additionalProperties\": false,\n  \"required\": [\"Title\", \"\
+              Description\"],\n  \"properties\": {\n    \"Title\": {\n      \"type\"\
+              : \"string\",\n      \"description\": \"30文字前後で簡潔かつキャッチー。テック系Podcastらしい雰囲気で、専門用語も適度に。\"\
+              ,\n      \"minLength\": 20,\n      \"maxLength\": 45,\n      \"contentMediaType\"\
+              : \"text/plain\"\n    },\n    \"Description\": {\n      \"type\": \"\
+              string\",\n      \"description\": \"200〜300文字で要点・トピック(3〜5点に触れる)・なぜ今知るべきか・誘引を含め、リンクや媒体名の列挙は避ける。\"\
+              ,\n      \"minLength\": 200,\n      \"maxLength\": 300,\n      \"contentMediaType\"\
+              : \"text/plain\",\n      \"not\": {\n        \"description\": \"ラジオ読み上げ向けにURL列挙を避ける（http/httpsのURLを含まない）。\"\
+              ,\n        \"pattern\": \"https?://\"\n      }\n    }\n  },\n  \"examples\"\
+              : [\n    {\n      \"Title\": \"AI規制の最新動向と生成モデルの実運用\",\n      \"Description\"\
+              : \"本エピソードでは、生成AIの規制動向、モデルの商用運用におけるリスク管理、半導体サプライの最新潮流、クラウド最適化の新手法をコンパクトに整理。なぜ今これが重要なのか、現場の意思決定にどう効くのかを具体例とともに解説し、次の一手を考えるヒントを提示します。\"\
+              \n    }\n  ]\n}"
+            response_format: json_schema
+            temperature: 0.7
+          mode: chat
+          name: gpt-4.1
+          provider: langgenius/openai/openai
+        prompt_template:
+        - id: 5b9cc615-d40a-4c4a-8c06-0aa588eb0d7a
+          role: system
+          text: "# 役割\nあなたは優秀なPodcastの編集者です。\n入力として与えられる「読み上げ記事の本文」から、Podcastエピソードに掲載するタイトルと説明文（description）を作成してください。\n\
+            \n# 要件\n- **タイトル**\n  - 30文字前後で簡潔かつキャッチーに\n  - テクノロジー系Podcastらしい雰囲気にすること\n\
+            \  - 専門用語を入れつつもカジュアルさを残す\n\n- **説明文 (description)**\n  - 200～300文字程度\n\
+            \  - 記事の要点をわかりやすくまとめる\n  - どんなトピックを扱っているか（3〜5点）を簡潔に触れる\n  - 聴取者に「なぜ面白いのか」「なぜ今知るべきなのか」が伝わるようにする\n\
+            \  - テック系リスナーが続きを聴きたくなるような誘引を加える\n  - リンクや媒体名の列挙は避ける（ラジオ読み上げ向けにする）\n\n\
+            # 出力形式\n- Title: （生成されたタイトル）\n- Description: （生成された説明文）"
+        - id: 88f0cefd-bd99-4572-8b4e-bde3c8ffd653
+          role: user
+          text: '{{#1756134109169.text#}}'
+        selected: false
+        structured_output:
+          schema:
+            $id: https://example.com/schemas/podcast-title-description.json
+            $schema: https://json-schema.org/draft/2020-12/schema
+            additionalProperties: false
+            description: Podcastエピソードのタイトルと説明文（読み上げ記事から生成）の検証用スキーマ。
+            examples:
+            - Description: 本エピソードでは、生成AIの規制動向、モデルの商用運用におけるリスク管理、半導体サプライの最新潮流、クラウド最適化の新手法をコンパクトに整理。なぜ今これが重要なのか、現場の意思決定にどう効くのかを具体例とともに解説し、次の一手を考えるヒントを提示します。
+              Title: AI規制の最新動向と生成モデルの実運用
+            properties:
+              Description:
+                contentMediaType: text/plain
+                description: 200〜300文字で要点・トピック(3〜5点に触れる)・なぜ今知るべきか・誘引を含め、リンクや媒体名の列挙は避ける。
+                maxLength: 300
+                minLength: 200
+                not:
+                  description: ラジオ読み上げ向けにURL列挙を避ける（http/httpsのURLを含まない）。
+                  pattern: https?://
+                type: string
+              Title:
+                contentMediaType: text/plain
+                description: 30文字前後で簡潔かつキャッチー。テック系Podcastらしい雰囲気で、専門用語も適度に。
+                maxLength: 45
+                minLength: 20
+                type: string
+            required:
+            - Title
+            - Description
+            title: Podcast Title & Description
+            type: object
+        structured_output_enabled: true
+        title: LLM (ニュース記事からタイトルとdescription生成)
+        type: llm
+        variables: []
+        vision:
+          enabled: false
+      height: 89
+      id: '1756392692997'
+      position:
+        x: 972.4115995974325
+        y: 517.0601368004408
+      positionAbsolute:
+        x: 972.4115995974325
+        y: 517.0601368004408
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        authorization:
+          config: null
+          type: no-auth
+        body:
+          data:
+          - id: key-value-372
+            key: ''
+            type: text
+            value: "{\n  \"message\": \"feat(md): add {{#1756136049521.text#}}-episode.md\"\
+              ,\n  \"content\": \"{{#1756395796555.text#}}\",\n  \"branch\": \"master\"\
+              \n}"
+          type: json
+        desc: ''
+        headers: 'Authorization:Bearer {{#env.GITHUB_PAT#}}
+
+          Accept:application/vnd.github+json
+
+          Content-Type:application/json'
+        method: put
+        params: ''
+        retry_config:
+          max_retries: 3
+          retry_enabled: true
+          retry_interval: 100
+        selected: false
+        ssl_verify: true
+        timeout:
+          max_connect_timeout: 0
+          max_read_timeout: 0
+          max_write_timeout: 0
+        title: episode.mdをGithubにアップ
+        type: http-request
+        url: https://api.github.com/repos/{{#env.GITHUB_OWNER#}}/{{#env.GITHUB_REPO#}}/contents/_posts/{{#1756136049521.text#}}-{{#1756392692997.structured_output.Title#}}.md
+        variables: []
+      height: 199
+      id: '17563938092300'
+      position:
+        x: 1583.7894377903342
+        y: 282
+      positionAbsolute:
+        x: 1583.7894377903342
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: Githubに送るmdの内容をbase64エンコードする
+        is_team_authorization: true
+        output_schema: null
+        paramSchemas:
+        - auto_generate: null
+          default: null
+          form: llm
+          human_description:
+            en_US: Text to encode
+            ja_JP: Text to encode
+            pt_BR: Text to encode
+            zh_Hans: 原始文本
+          label:
+            en_US: Raw Text
+            ja_JP: Raw Text
+            pt_BR: Raw Text
+            zh_Hans: 原始文本
+          llm_description: Text to encode
+          max: null
+          min: null
+          name: plain_text
+          options: []
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: string
+        - auto_generate: null
+          default: 'false'
+          form: form
+          human_description:
+            en_US: Whether to enable URL safe alphabet
+            ja_JP: Whether to enable URL safe alphabet
+            pt_BR: Whether to enable URL safe alphabet
+            zh_Hans: 是否启用URL安全字符
+          label:
+            en_US: Whether to enable URL safe alphabet
+            ja_JP: Whether to enable URL safe alphabet
+            pt_BR: Whether to enable URL safe alphabet
+            zh_Hans: 是否启用URL安全字符
+          llm_description: Whether to enable URL safe alphabet, default to "false"
+          max: null
+          min: null
+          name: urlsafe_enabled
+          options:
+          - icon: ''
+            label:
+              en_US: 'Yes'
+              ja_JP: 'Yes'
+              pt_BR: 'Yes'
+              zh_Hans: 是
+            value: 'true'
+          - icon: ''
+            label:
+              en_US: 'No'
+              ja_JP: 'No'
+              pt_BR: 'No'
+              zh_Hans: 否
+            value: 'false'
+          placeholder: null
+          precision: null
+          required: true
+          scope: null
+          template: null
+          type: select
+        params:
+          plain_text: ''
+          urlsafe_enabled: ''
+        provider_id: bowenliang123/base64_codec/base64_codec
+        provider_name: bowenliang123/base64_codec/base64_codec
+        provider_type: builtin
+        selected: false
+        title: Base64 Encoder
+        tool_configurations:
+          urlsafe_enabled:
+            type: constant
+            value: 'false'
+        tool_description: A tool to encode text to Base64-encoded string
+        tool_label: Base64 Encoder
+        tool_name: base64_encoder
+        tool_node_version: '2'
+        tool_parameters:
+          plain_text:
+            type: mixed
+            value: "---\nactor_ids:\n  - alice\n  - bob\naudio_file_path: /audio/{{#1756136049521.text#}}-episode.wav\n\
+              audio_file_size: 0\ndate: {{#1756136049521.text#}} 00:00:00 +0900\n\
+              description: {{#1756392692997.structured_output.Description#}}\nduration:\
+              \ \"00:00\"\nlayout: article\ntitle: {{#1756392692997.structured_output.Title#}}\n\
+              ---"
+        type: tool
+      height: 133
+      id: '1756395796555'
+      position:
+        x: 1240.675412934396
+        y: 517.0601368004408
+      positionAbsolute:
+        x: 1240.675412934396
+        y: 517.0601368004408
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    - data:
+        desc: ''
+        outputs: []
+        selected: false
+        title: 終了
+        type: end
+      height: 53
+      id: '1756396338737'
+      position:
+        x: 1876.755562041083
+        y: 282
+      positionAbsolute:
+        x: 1876.755562041083
+        y: 282
+      selected: false
+      sourcePosition: right
+      targetPosition: left
+      type: custom
+      width: 243
+    viewport:
+      x: -881.4010970019291
+      y: 267.7140795112937
+      zoom: 0.8874746207089346
